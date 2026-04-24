@@ -1,0 +1,66 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotogram</title>
+    <meta name="description" content="Fotogram - Teile und entdecke deine Lieblingsfotos.">
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favorite.png">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <img src="./assets/icons/header-logo.png" alt="header logo" class="header-logo">
+        Fotogram
+    </header>
+
+    <main>
+        <section class="gallery" aria-label="Galerie Vorschau">
+            <h1 class="gallery-title">Your personal photo album</h1>
+            <div id="gallery-grid" class="gallery-grid">
+                <!-- dynamisches grid - mittels init()/buildGallery() -->
+            </div>
+        </section>
+    </main>
+
+
+    <dialog class="lightbox" id="lightbox" autofocus>
+        <div class="lightbox-header">
+            <span id="lightbox-img-title" class="lightbox-img-title">dateiname.jpg</span>
+            <button id="lightbox-btn-close" class="lightbox-close-button" tabindex="1">
+                <img class="lightbox-close-button-icon" src="./assets/icons/Close icon.png" alt="close button">
+            </button>
+        </div>
+        <div class="lightbox-body">
+            <img id="lightbox-img" class="lightbox-img" src="" alt="selected image">
+        </div>
+        <div class="lightbox-footer">
+            <button id="lightbox-btn-prev" class="lightbox-arrow-button" tabindex="2">
+                <img class="lightbox-prev-arrow" src="./assets/icons/Arrow-Right-1.png" alt="lightbox prev arrow">
+            </button>
+            <div class="lightbox-step-indicator">
+                <span id="currentStep">1</span> / <span id="totalSteps">10</span>
+            </div>
+            <button id="lightbox-btn-next" class="lightbox-arrow-button" tabindex="3">
+                <img class="lightbox-next-arrow" src="./assets/icons/Arrow-Right.png" alt="lightbox next arrow">
+            </button>
+        </div>
+    </dialog>
+
+
+    <footer>
+        <!-- <div class="berg">
+            <svg viewBox="0 0 1440 128" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0,128 Q720,0 1440,128 Z" fill="#333"/>
+            </svg>
+        </div> -->
+        <p>&copy; 2026 Fotogram</p>
+        <img src="./assets/icons/footer-logo.png" alt="footer logo" class="footer-logo">
+    </footer>
+
+</body>
+
+</html>
