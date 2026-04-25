@@ -22,6 +22,9 @@
 
 
 const GRID = document.getElementById("gallery-grid");
+const DIRECTION_NEXT = "next";
+const DIRECTION_PREV = "prev";
+
 let currentIndex = 0;
 
 /** Setzt den Titel im Dialog. */
@@ -55,7 +58,7 @@ function updateDialog() {
 /** Rendert ein einzelnes Vorschaubild. */
 function renderGridImage(image, index) {
   return `
-    <button class="gallery-btn" data-index="${index}">
+    <button class="gallery-btn" data-index="${index}" type="button" aria-label="${image.title} vergrößern">
       <img
         class="grid-img"
         src="${image.src}"
@@ -108,13 +111,13 @@ function updateCurrentIndex(direction) {
 
 /** Zeigt das vorherige Bild. */
 function showPreviousImage() {
-  updateCurrentIndex("prev");
+  updateCurrentIndex(DIRECTION_PREV);
   updateDialog();
 }
 
 /** Zeigt das nächste Bild. */
 function showNextImage() {
-  updateCurrentIndex("next");
+  updateCurrentIndex(DIRECTION_NEXT);
   updateDialog();
 }
 
@@ -124,16 +127,19 @@ function closeDialog() {
   dialog.close();
 }
 
-function trapFocus(dialog, e) {
-  if (e.key !== "Tab") return;
+/** Hält den Tastaturfokus innerhalb des geöffneten Dialogs. */
+function trapFocus(dialog, event) {
+  if (event.key !== "Tab") return;
+
   const focusable = dialog.querySelectorAll("button");
   const first = focusable[0];
   const last = focusable[focusable.length - 1];
+
   if (e.shiftKey && document.activeElement === first) {
-    e.preventDefault();
+    event.preventDefault();
     last.focus();
-  } else if (!e.shiftKey && document.activeElement === last) {
-    e.preventDefault();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
     first.focus();
   }
 }
@@ -147,7 +153,7 @@ function initDialog() {
   buttonNext.addEventListener("click", showNextImage);
   buttonClose.addEventListener("click", closeDialog);
   const dialog = document.getElementById("dialog");
-  dialog.addEventListener("keydown", (e) => trapFocus(dialog, e));
+  dialog.addEventListener("keydown", (event) => trapFocus(dialog, event));
 }
 
 /** Startet die Galerie. */

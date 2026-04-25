@@ -1,11 +1,12 @@
 ﻿<!doctype html>
-<html lang="en">
+<html lang="de">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fotogram</title>
-  <meta name="description" content="Fotogram ist eine Bildergalerie, die Fotos von Vögeln im Berliner Tiergarten zeigt.">
+  <meta name="description"
+    content="Fotogram ist eine Bildergalerie, die Fotos von Vögeln im Berliner Tiergarten zeigt.">
   <link rel="icon" type="image/x-icon" href="./assets/icons/favorite.png">
   <link rel="stylesheet" href="./style.css">
   <script src="./script.js" defer></script>
@@ -28,25 +29,25 @@
     </section>
 
 
-    <dialog class="dialog" id="dialog">
+    <dialog class="dialog" id="dialog" aria-labelledby="dialog-img-title">
       <div class="dialog-header">
-        <span id="dialog-img-title" class="dialog-img-title">dateiname.jpg</span>
-        <button id="dialog-btn-close" class="dialog-close-button">
-          <img class="dialog-close-button-icon" src="./assets/icons/Close icon.png" alt="close button">
+        <h3 id="dialog-img-title" class="dialog-img-title">dateiname.jpg</h3>
+        <button id="dialog-btn-close" class="dialog-close-button" type="button" aria-label="Dialog schließen">
+          <img class="dialog-close-button-icon" src="./assets/icons/Close icon.png" alt="">
         </button>
       </div>
       <div class="dialog-body">
         <img id="dialog-img" class="dialog-img" src="" alt="selected image">
       </div>
       <div class="dialog-footer">
-        <button id="dialog-btn-prev" class="dialog-arrow-button">
-          <img class="dialog-prev-arrow" src="./assets/icons/Arrow-Right.png" alt="dialog prev arrow">
+        <button id="dialog-btn-prev" class="dialog-arrow-button" type="button" aria-label="Vorheriges Bild anzeigen">
+          <img class="dialog-prev-arrow" src="./assets/icons/Arrow-Right.png" alt="">
         </button>
-        <div class="dialog-step-indicator">
+        <div class="dialog-step-indicator" aria-live="polite">
           <span id="currentStep">1</span> / <span id="totalSteps">10</span>
         </div>
-        <button id="dialog-btn-next" class="dialog-arrow-button">
-          <img class="dialog-next-arrow" src="./assets/icons/Arrow-Right.png" alt="dialog next arrow">
+        <button id="dialog-btn-next" class="dialog-arrow-button" type="button" aria-label="Nächstes Bild anzeigen">
+          <img class="dialog-next-arrow" src="./assets/icons/Arrow-Right.png" alt="">
         </button>
       </div>
     </dialog>
