@@ -1,13 +1,16 @@
-﻿* {
+﻿/* Reset */
+* {
   box-sizing: border-box;
   margin: 0;
 }
 
+/* Base */
 html {
   scroll-behavior: smooth;
   color: white;
 }
 
+/* Variables */
 :root {
   --frame-color: #09212A;
   --content-color: #06171e;
@@ -17,20 +20,18 @@ html {
   --font-normal: 400;
   --font-bold: 700;
   --font-extra-bold: 800;
-
 }
 
-/* Schriften local einbinden */
-
-/* 
-    Figtree Font
-    Lizenz: SIL Open Font License 1.1
-    Quelle: https://github.com/erikdkennedy/figtree
+/* Fonts */
+/*
+  Figtree Font
+  Lizenz: SIL Open Font License 1.1
+  Quelle: https://github.com/erikdkennedy/figtree
 */
 
 @font-face {
   font-family: 'Figtree';
-  src: url('../assets/fonts/Figtree/Figtree-VariableFont_wght.ttf') format('truetype');
+  src: url('./assets/fonts/Figtree/Figtree-VariableFont_wght.ttf') format('truetype');
   font-weight: 100 900;
   /* alle Gewichte von dünn bis fett */
   font-style: normal;
@@ -38,12 +39,13 @@ html {
 
 @font-face {
   font-family: 'Figtree';
-  src: url('../assets/fonts/Figtree/Figtree-Italic-VariableFont_wght.ttf') format('truetype');
+  src: url('./assets/fonts/Figtree/Figtree-Italic-VariableFont_wght.ttf') format('truetype');
   font-weight: 100 900;
   /* alle Gewichte auch als kursiv */
   font-style: italic;
 }
 
+/* Typography */
 h1 {
   font-size: 56px;
   font-weight: var(--font-extra-bold);
@@ -51,11 +53,10 @@ h1 {
 
 a {
   color: inherit;
-  /* keine blaue Farbe */
   text-decoration: none;
-  /* kein Unterstrich */
 }
 
+/* Layout */
 body {
   display: flex;
   flex-direction: column;
@@ -64,7 +65,6 @@ body {
   margin: 0;
   /* kein ungewollter Außenabstand */
   font-family: 'Figtree', sans-serif;
-  /* lokale Schriftart verwenden */
   background: var(--content-color);
   color: var(--main-text-color);
   gap: 80px;
@@ -73,7 +73,7 @@ body {
 header {
   background: var(--frame-color);
   padding: 16px 80px;
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   height: 80px;
   font-size: 30px;
@@ -81,7 +81,7 @@ header {
 }
 
 main {
-  /* füllt den ganzen Platz zwischen header und footer */
+    /* füllt den ganzen Platz zwischen header und footer */
   max-width: var(--max-content-width);
   /* begrenzt die Breite des Inhalts */
   width: 100%;
@@ -89,6 +89,7 @@ main {
   margin: 0 auto;
   /* zentriert den Inhalt horizontal */
   padding: 24px;
+  
   /* Innenabstand damit Text nicht am Rand klebt */
   flex: 1;
   display: flex;
@@ -96,7 +97,7 @@ main {
   align-items: center;
 }
 
-
+/* Gallery */
 .gallery {
   display: flex;
   flex-direction: column;
@@ -146,19 +147,15 @@ main {
   border-radius: 16px;
 }
 
+/* Dialog */
 dialog {
-  /* dialog mittig */
   margin: auto;
-  color: var(--main-text-color);
   border: none;
   outline: none;
-
-  /* aus Figma */
-  border-radius: 40px;
-  /* width: 688px; */
-  /* height: 675px; */
   padding: 56px 64px;
   background-color: var(--frame-color);
+  color: var(--main-text-color);
+  border-radius: 40px;
 }
 
 
@@ -174,10 +171,10 @@ dialog::backdrop {
 }
 
 .dialog-header {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .dialog-img {
@@ -187,25 +184,16 @@ dialog::backdrop {
   border: none;
 }
 
-/* .dialog-img:hover {
-    border: #6BC1E1 solid 2px;
-    border-radius: 16px;
-} */
-
 button {
-  border: none;
   background: none;
+  border: none;
   cursor: pointer;
 }
 
 dialog button {
-  border-radius: 100px;
   padding: 0;
-  /* outline: none; */
+  border-radius: 100px;
 }
-
-/* dialog button:focus {
-} */
 
 .dialog-close-button {
   width: 30px;
@@ -215,7 +203,6 @@ dialog button {
 .dialog-close-button-icon {
   width: 24px;
   height: 24px;
-
 }
 
 .dialog-close-button:hover {
@@ -233,9 +220,7 @@ dialog button {
 
 .dialog-img-title {
   font-size: 24px;
-  font-weight: bold;
-  /* font-weight: 700; */
-  /* pointer-events: none; */
+  font-weight: var(--font-bold);
 }
 
 .dialog-arrow-button {
@@ -244,7 +229,7 @@ dialog button {
   background: #1e1e23;
 }
 
-.dialog-arrow-button:focus {
+.dialog-arrow-button:focus-visible {
   outline: 2px solid var(--tab-focus-color);
   outline-offset: 2px;
 }
@@ -271,7 +256,7 @@ dialog button {
   gap: 59px;
 }
 
-
+/* Footer */
 .footer-curve {
   height: 128px;
   background-color: var(--frame-color);
@@ -287,9 +272,10 @@ dialog button {
   gap: 16px;
   font-size: 14px;
   color: #99ACB3;
-  /* font-weight: 400; */
-  font-style: normal;
+  font-weight: var(--font-normal);
 }
+
+/* Responsive */
 
 @media (max-width: 1180px) {
   .gallery-grid {
@@ -320,35 +306,18 @@ dialog button {
   }
 
   .dialog-img {
-    /* aus Figma  */
-    width: 100%;
     object-fit: cover;
   }
 
   .dialog-footer {
     gap: 56px;
   }
-
 }
 
 @media (max-width: 375px) {
-
-  dialog {
-    /* aus Figma  */
-    /* padding: 32px 16px; */
-
-  }
-
-  .dialog-img {
-    /* aus Figma  */
-    width: 100%;
-    object-fit: cover;
-  }
-
   .dialog-header {
     display: flex;
     flex-direction: column-reverse;
-    /* aus Figma  */
     gap: 8px;
   }
 
