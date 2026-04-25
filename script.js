@@ -37,7 +37,7 @@ function setImageTitle() {
 function setDialogImage() {
   const dialogImage = document.getElementById("dialog-img");
   dialogImage.src = IMAGES[currentIndex].src;
-  dialogImage.alt = IMAGES[currentIndex].title;
+  dialogImage.alt = `Ausgewähltes Vogelbild: ${IMAGES[currentIndex].title}`;
 }
 
 /** Setzt die Anzeige "aktuelles Bild / gesamt". */
@@ -135,7 +135,7 @@ function trapFocus(dialog, event) {
   const first = focusable[0];
   const last = focusable[focusable.length - 1];
 
-  if (e.shiftKey && document.activeElement === first) {
+  if (event.shiftKey && document.activeElement === first) {
     event.preventDefault();
     last.focus();
   } else if (!event.shiftKey && document.activeElement === last) {

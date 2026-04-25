@@ -30,16 +30,16 @@
 
 
     <dialog class="dialog" id="dialog" aria-labelledby="dialog-img-title">
-      <div class="dialog-header">
+      <header class="dialog-header">
         <h3 id="dialog-img-title" class="dialog-img-title">dateiname.jpg</h3>
-        <button id="dialog-btn-close" class="dialog-close-button" type="button" aria-label="Dialog schließen">
-          <img class="dialog-close-button-icon" src="./assets/icons/Close icon.png" alt="">
+        <button id="dialog-btn-close" class="dialog-close-button" type="button" aria-label="Dialog schließen" >
+          <img class="dialog-close-button-icon" src="./assets/icons/Close icon.png" alt="Button zum schließen" >
         </button>
-      </div>
-      <div class="dialog-body">
-        <img id="dialog-img" class="dialog-img" src="" alt="selected image">
-      </div>
-      <div class="dialog-footer">
+      </header>
+      <figure class="dialog-body">
+        <img id="dialog-img" class="dialog-img" src="" alt="Ausgewähltes Vogelbild">
+      </figure>
+      <footer class="dialog-footer">
         <button id="dialog-btn-prev" class="dialog-arrow-button" type="button" aria-label="Vorheriges Bild anzeigen">
           <img class="dialog-prev-arrow" src="./assets/icons/Arrow-Right.png" alt="">
         </button>
@@ -49,7 +49,7 @@
         <button id="dialog-btn-next" class="dialog-arrow-button" type="button" aria-label="Nächstes Bild anzeigen">
           <img class="dialog-next-arrow" src="./assets/icons/Arrow-Right.png" alt="">
         </button>
-      </div>
+      </footer>
     </dialog>
   </main>
 

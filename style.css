@@ -79,7 +79,7 @@ header {
   background: var(--frame-color);
   padding: 16px 80px;
   /* position: sticky; */
-  top: 0;
+  /* top: 0; */
   height: 80px;
   font-size: 30px;
   font-weight: var(--font-bold);
@@ -180,6 +180,7 @@ dialog::backdrop {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: 0;
 }
 
 .dialog-img {
