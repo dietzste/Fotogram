@@ -157,7 +157,8 @@ dialog {
   margin: auto;
   border: none;
   outline: none;
-  padding: 56px 64px;
+  padding: clamp(32px, 2vw, 56px) clamp(16px, 4vw, 64px);
+  /* padding: 56px 64px; */
   background-color: var(--frame-color);
   color: var(--main-text-color);
   border-radius: 40px;
@@ -185,8 +186,8 @@ dialog::backdrop {
 
 .dialog-img {
   width: 100%;
-  width: 560px;
-  height: 375px;
+  max-width: 560px;
+  max-height: 375px;
   border: none;
 }
 
