@@ -27,20 +27,20 @@ const DIRECTION_PREV = "prev";
 
 let currentIndex = 0;
 
-/** Setzt den Titel im Dialog. */
+/** Sets the title inside the dialog. */
 function setImageTitle() {
   const dialogTitle = document.getElementById("dialog-img-title");
   dialogTitle.textContent = IMAGES[currentIndex].title;
 }
 
-/** Setzt das Bild im Dialog. */
+/** Sets the image inside the dialog. */
 function setDialogImage() {
   const dialogImage = document.getElementById("dialog-img");
   dialogImage.src = IMAGES[currentIndex].src;
   dialogImage.alt = `Ausgewähltes Vogelbild: ${IMAGES[currentIndex].title}`;
 }
 
-/** Setzt die Anzeige "aktuelles Bild / gesamt". */
+/** Sets the "current image / total" indicator. */
 function setStepIndicator() {
   const currentStep = document.getElementById("currentStep");
   const totalSteps = document.getElementById("totalSteps");
@@ -48,14 +48,14 @@ function setStepIndicator() {
   totalSteps.textContent = String(IMAGES.length);
 }
 
-/** Aktualisiert alle dialog-Inhalte. */
+/** Updates dialog content. */
 function updateDialog() {
   setImageTitle();
   setDialogImage();
   setStepIndicator();
 }
 
-/** Rendert ein einzelnes Vorschaubild. */
+/** Renders a single gallery preview image. */
 function renderGridImage(image, index) {
   return `
     <button class="gallery-btn" data-index="${index}" type="button" aria-label="${image.title} vergrößern">
@@ -67,14 +67,14 @@ function renderGridImage(image, index) {
   `;
 }
 
-/** Baut alle Vorschaubilder in die Galerie. */
+/** Builds all preview images into the gallery. */
 function buildGallery() {
   IMAGES.forEach((image, index) => {
     GRID.innerHTML += renderGridImage(image, index);
   });
 }
 
-/** Öffnet den Dialog für ein bestimmtes Bild. */
+/** Opens the dialog for a specific image. */
 function openDialog(index) {
   const dialog = document.getElementById("dialog");
   currentIndex = index;
@@ -84,7 +84,7 @@ function openDialog(index) {
   document.getElementById("dialog-btn-close").focus();
 }
 
-/** Klick-Logik für die Galerie. */
+/** Handles click events inside the gallery. */
 function onGridClick(event) {
   const btn = event.target.closest(".gallery-btn");
   if (!btn) return;
@@ -92,7 +92,7 @@ function onGridClick(event) {
   openDialog(index);
 }
 
-/** Aktualisiert den aktuellen Index basierend auf der Richtung. */
+/** Updates the current index based on the given direction. */
 function updateCurrentIndex(direction) {
   if (direction === "next") {
     if (currentIndex === IMAGES.length - 1) {
@@ -109,25 +109,25 @@ function updateCurrentIndex(direction) {
   }
 }
 
-/** Zeigt das vorherige Bild. */
+/** Shows the previous image. */
 function showPreviousImage() {
   updateCurrentIndex(DIRECTION_PREV);
   updateDialog();
 }
 
-/** Zeigt das nächste Bild. */
+/** Shows the next image. */
 function showNextImage() {
   updateCurrentIndex(DIRECTION_NEXT);
   updateDialog();
 }
 
-/** Schließt den Dialog. */
+/** Closes the dialog. */
 function closeDialog() {
   const dialog = document.getElementById("dialog");
   dialog.close();
 }
 
-/** Hält den Tastaturfokus innerhalb des geöffneten Dialogs. */
+/** Keeps the keyboard focus inside the open dialog. */
 function trapFocus(dialog, event) {
   if (event.key !== "Tab") return;
 
@@ -144,7 +144,7 @@ function trapFocus(dialog, event) {
   }
 }
 
-/** Verknüpft alle Dialog-Buttons. */
+/** Wires up all dialog button events. */
 function initDialog() {
   const buttonPrev = document.getElementById("dialog-btn-prev");
   const buttonNext = document.getElementById("dialog-btn-next");
@@ -154,9 +154,15 @@ function initDialog() {
   buttonClose.addEventListener("click", closeDialog);
   const dialog = document.getElementById("dialog");
   dialog.addEventListener("keydown", (event) => trapFocus(dialog, event));
+
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) {
+      closeDialog();
+    }
+  });
 }
 
-/** Startet die Galerie. */
+/** Initializes the gallery. */
 function init() {
   buildGallery();
   initDialog();
